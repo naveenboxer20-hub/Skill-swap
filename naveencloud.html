@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkillSwap – Trade Skills, Not Money</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f7f9fb;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    header {
+      background: #2b6cb0;
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    header h1 { margin: 0; font-size: 2rem; }
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      margin: 30px auto;
+    }
+    .intro {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 20px;
+      transition: transform 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card h3 {
+      margin-top: 0;
+      color: #2b6cb0;
+    }
+    form {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background: #2b6cb0;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+    }
+    button:hover {
+      background: #1e4f82;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #777;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>SkillSwap</h1>
+    <p>Trade Skills, Not Money 💡</p>
+  </header>
+
+  <div class="container">
+    <div class="intro">
+      <h2>Learn. Teach. Connect.</h2>
+      <p>Exchange your skills with others and grow together. No money involved – just mutual learning!</p>
+    </div>
+
+    <h3>Popular Skill Offers</h3>
+    <div class="skills">
+      <div class="card">
+        <h3>🎨 Logo Design</h3>
+        <p>Offered by: <b>Arun</b></p>
+        <p>Wants to learn: Guitar 🎸</p>
+      </div>
+      <div class="card">
+        <h3>🎸 Guitar Basics</h3>
+        <p>Offered by: <b>Nisha</b></p>
+        <p>Wants to learn: Cooking 🍳</p>
+      </div>
+      <div class="card">
+        <h3>💻 Web Development</h3>
+        <p>Offered by: <b>Rahul</b></p>
+        <p>Wants to learn: Photography 📸</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top:40px;">Find Your Skill Match</h3>
+    <form id="matchForm">
+      <label>Your Skill:</label>
+      <input type="text" id="mySkill" placeholder="e.g., Guitar, Photoshop, Yoga" required>
+
+      <label>Skill You Want to Learn:</label>
+      <input type="text" id="learnSkill" placeholder="e.g., Coding, Cooking, Art" required>
+
+      <button type="submit">Find Match 🔍</button>
+    </form>
+
+    <div id="result" style="margin-top:20px; font-weight:bold; text-align:center;"></div>
+  </div>
+
+  <footer>
+    © 2025 SkillSwap | Built for learners by learners 🌍
+  </footer>
+
+  <script>
+    document.getElementById("matchForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const mySkill = document.getElementById("mySkill").value.toLowerCase();
+      const learnSkill = document.getElementById("learnSkill").value.toLowerCase();
+      const matches = {
+        "guitar": "Arun – teaches Logo Design, wants Guitar lessons!",
+        "cooking": "Nisha – teaches Guitar, wants Cooking lessons!",
+        "photography": "Rahul – teaches Web Dev, wants Photography tips!"
+      };
+      const result = Object.entries(matches).find(([key]) => key === learnSkill);
+      document.getElementById("result").textContent = result 
+        ? ✅ Match Found: ${result[1]}
+        : "❌ No direct match found. Try again later!";
+    });
+  </script>
+</body>
+</html>
